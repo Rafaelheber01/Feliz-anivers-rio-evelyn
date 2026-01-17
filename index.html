@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Feliz Aniversário Evelyn! 🎉</title>
+
+    <!-- Meta Tags para Compartilhamento -->
+    <meta property="og:title" content="Feliz Aniversário Evelyn! 🎂">
+    <meta property="og:description" content="Uma surpresa especial para os 30 anos da mulher mais incrível!">
+    <meta property="og:image" content="foto-casal.jpg">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Pacifico&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Tela de Boas-Vindas -->
+    <div id="welcome-screen" class="screen active">
+        <div class="stars"></div>
+        <div class="welcome-content">
+            <h1 class="title-animated">🎂 Evelyn 🎂</h1>
+            <div class="age-badge">30 Anos</div>
+            <p class="subtitle">Prepare-se para uma surpresa especial!</p>
+            <button id="start-btn" class="btn-primary">Começar a Celebração 🎉</button>
+        </div>
+    </div>
+
+    <!-- Tela do Jogo -->
+    <div id="game-screen" class="screen">
+        <div class="stars"></div>
+        <div class="game-container">
+            <h2 class="game-title">🎈 Estoure os Balões! 🎈</h2>
+            <p class="game-instructions">Toque nos balões para estourá-los!<br>Estoure 10 balões para continuar</p>
+            <div class="score-board">
+                <span class="score-label">Balões estourados:</span>
+                <span id="score" class="score-value">0/10</span>
+            </div>
+            <div id="balloons-container" class="balloons-container"></div>
+        </div>
+    </div>
+
+    <!-- Tela Principal -->
+    <div id="main-screen" class="screen">
+        <div class="stars"></div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="main-title">Feliz Aniversário</h1>
+                <h2 class="name-title">Evelyn</h2>
+                <div class="age-display">30 Anos de Luz ✨</div>
+            </div>
+        </header>
+
+        <!-- Galeria de Fotos -->
+        <section class="photo-section reveal">
+            <h3 class="section-title">Nossos Momentos 💕</h3>
+            <div class="photo-gallery">
+                <div class="photo-card" id="main-photo-card">
+                    <img src="foto-casal.jpg" alt="Nós dois" class="photo">
+                    <div class="photo-overlay">
+                        <p class="photo-caption">Clique para ampliar ❤️</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Linha do Tempo -->
+        <section class="timeline-section reveal">
+            <h3 class="section-title">Nossa Jornada 👣</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>O Início ✨</h4>
+                        <p>Onde tudo começou, o primeiro olhar e os primeiros planos.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>A Chegada do Isaque 👦</h4>
+                        <p>Nossa vida ganhou uma nova cor e um amor que não cabe no peito.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>A Chegada do Israel 👶</h4>
+                        <p>Nossa família se completou com mais essa benção maravilhosa.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Hoje e Sempre ♾️</h4>
+                        <p>Celebrando seus 30 anos e o futuro lindo que temos pela frente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mensagem Especial -->
+        <section class="message-section">
+            <div class="message-card">
+                <div class="message-icon">💖</div>
+                <h3 class="message-title">Para a Mulher Mais Especial</h3>
+                <div class="message-content">
+                    <p>Evelyn, hoje você completa 30 anos e eu não poderia deixar passar em branco!</p>
+
+                    <p>Você é uma <strong>mulher batalhadora</strong>, uma verdadeira <strong>guerreira</strong> que
+                        enfrenta todos os desafios com coragem e determinação.</p>
+
+                    <p>A forma como você cuida do <strong>Isaque</strong> e do <strong>Israel</strong> é simplesmente
+                        inspiradora. Você é uma mãe incrível, dedicada e amorosa.</p>
+
+                    <p>Eu desejo <strong>todo o mundo</strong> para você, porque você merece tudo de melhor que a vida
+                        pode oferecer! ✨</p>
+
+                    <p class="highlight">Você é especial em minha vida e sempre será! 💕</p>
+
+                    <p class="signature">Feliz Aniversário, meu amor! 🎂🎉🎈</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção dos Filhos -->
+        <section class="kids-section">
+            <h3 class="section-title">Mãe do Isaque e Israel 👦👦</h3>
+            <div class="kids-tribute">
+                <div class="tribute-card">
+                    <div class="tribute-emoji">🌟</div>
+                    <p>Uma mãe que dedica seu amor, tempo e energia para criar dois meninos incríveis!</p>
+                </div>
+                <div class="tribute-card">
+                    <div class="tribute-emoji">💪</div>
+                    <p>Sua força e dedicação são admiráveis. Você é o exemplo perfeito de amor incondicional!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Desejos -->
+        <section class="wishes-section">
+            <h3 class="section-title">Meus Desejos para Você 🌠</h3>
+            <div class="wishes-grid">
+                <div class="wish-card">
+                    <div class="wish-icon">🎯</div>
+                    <p>Que todos os seus sonhos se realizem</p>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-icon">💖</div>
+                    <p>Muito amor e felicidade</p>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-icon">🌈</div>
+                    <p>Dias cheios de alegria e paz</p>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-icon">✨</div>
+                    <p>Saúde e prosperidade sempre</p>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-icon">🎊</div>
+                    <p>Momentos inesquecíveis</p>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-icon">🌟</div>
+                    <p>Que você brilhe cada vez mais</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-text">Feito com muito ❤️ para você</p>
+            <p class="footer-date">17 de Janeiro de 2026</p>
+        </footer>
+    </div>
+
+    <!-- Controle de Áudio -->
+    <div id="audio-control" class="audio-control hidden">
+        <button id="audio-toggle" class="audio-btn">
+            <span class="audio-icon">🔊</span>
+        </button>
+    </div>
+
+    <!-- Modal de Foto -->
+    <div id="photo-modal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="img-expanded">
+        <div id="caption"></div>
+    </div>
+
+    <!-- Container de Corações -->
+    <div id="hearts-container" class="hearts-container"></div>
+
+    <audio id="background-music" loop>
+        <source src="all-star.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

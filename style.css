@@ -1,0 +1,859 @@
+:root {
+    --primary: #FF1493;
+    --secondary: #FF69B4;
+    --accent: #FFD700;
+    --dark: #1a0033;
+    --light: #fff;
+    --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--dark);
+    color: var(--light);
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Estrelas de Fundo */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.stars::before,
+.stars::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    box-shadow:
+        100px 100px white, 200px 150px white, 300px 50px white,
+        400px 200px white, 500px 100px white, 600px 250px white,
+        50px 300px white, 150px 350px white, 250px 400px white,
+        350px 300px white, 450px 350px white, 550px 400px white,
+        80px 450px white, 180px 500px white, 280px 550px white,
+        380px 450px white, 480px 500px white, 580px 550px white;
+    animation: twinkle 3s infinite;
+}
+
+.stars::after {
+    animation-delay: 1.5s;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Telas */
+.screen {
+    display: none;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* Tela de Boas-Vindas */
+#welcome-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+}
+
+.welcome-content {
+    text-align: center;
+    padding: 20px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.title-animated {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(3rem, 15vw, 5rem);
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #FFD700, #FF69B4, #FFD700);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease infinite;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.age-badge {
+    display: inline-block;
+    background: var(--gradient-2);
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    font-weight: 800;
+    margin: 20px 0;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.5);
+    animation: pulse 2s infinite;
+}
+
+.subtitle {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+    margin: 30px 0;
+    opacity: 0.9;
+}
+
+.btn-primary {
+    background: var(--gradient-2);
+    color: white;
+    border: none;
+    padding: 18px 45px;
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 20px;
+}
+
+.btn-primary:active {
+    transform: scale(0.95);
+    box-shadow: 0 5px 15px rgba(245, 87, 108, 0.6);
+}
+
+/* Tela do Jogo */
+#game-screen {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+}
+
+.game-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+.game-title {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(2rem, 8vw, 3rem);
+    text-align: center;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.game-instructions {
+    text-align: center;
+    font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+    margin-bottom: 25px;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+.score-board {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 15px 25px;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: clamp(1rem, 4vw, 1.3rem);
+    font-weight: 600;
+}
+
+.score-value {
+    color: var(--accent);
+    font-weight: 800;
+    margin-left: 10px;
+}
+
+.balloons-container {
+    position: relative;
+    height: 60vh;
+    min-height: 400px;
+}
+
+.balloon {
+    position: absolute;
+    font-size: clamp(3rem, 12vw, 5rem);
+    cursor: pointer;
+    animation: floatUp 4s linear;
+    user-select: none;
+    transition: transform 0.1s;
+}
+
+.balloon:active {
+    transform: scale(1.2);
+}
+
+@keyframes floatUp {
+    from {
+        bottom: -100px;
+        transform: translateX(0) rotate(0deg);
+    }
+
+    to {
+        bottom: 100%;
+        transform: translateX(var(--drift)) rotate(360deg);
+    }
+}
+
+.balloon.pop {
+    animation: popAnimation 0.3s ease-out forwards;
+}
+
+@keyframes popAnimation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* Tela Principal */
+#main-screen {
+    padding-bottom: 40px;
+}
+
+.header {
+    background: var(--gradient-1);
+    padding: 60px 20px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '🎉';
+    position: absolute;
+    font-size: 100px;
+    opacity: 0.1;
+    top: 20px;
+    left: 20px;
+    animation: rotate 10s linear infinite;
+}
+
+.header::after {
+    content: '🎂';
+    position: absolute;
+    font-size: 100px;
+    opacity: 0.1;
+    bottom: 20px;
+    right: 20px;
+    animation: rotate 10s linear infinite reverse;
+}
+
+.main-title {
+    font-size: clamp(1.8rem, 7vw, 3rem);
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.name-title {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(3rem, 12vw, 5rem);
+    background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+    animation: gradientShift 3s ease infinite;
+    margin-bottom: 15px;
+}
+
+.photo-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 40px rgba(255, 20, 147, 0.3);
+}
+
+.photo-card {
+    cursor: pointer;
+}
+
+.age-display {
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
+    font-weight: 600;
+    opacity: 0.95;
+}
+
+/* Seções */
+section {
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+    text-align: center;
+    margin-bottom: 30px;
+    background: var(--gradient-2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+}
+
+/* Galeria de Fotos */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.photo-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.photo-card:active {
+    transform: scale(0.98);
+}
+
+.photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 3/4;
+}
+
+.photo-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 20px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.photo-card:hover .photo-overlay,
+.photo-card:active .photo-overlay {
+    transform: translateY(0);
+}
+
+.photo-caption {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Mensagem Especial */
+.message-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 30px;
+    padding: 40px 20px;
+}
+
+.message-card {
+    text-align: center;
+}
+
+.message-icon {
+    font-size: clamp(3rem, 12vw, 5rem);
+    margin-bottom: 20px;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    10%,
+    30% {
+        transform: scale(1.1);
+    }
+
+    20%,
+    40% {
+        transform: scale(1);
+    }
+}
+
+.message-title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    margin-bottom: 25px;
+    color: var(--secondary);
+}
+
+.message-content {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    line-height: 1.8;
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.message-content p {
+    margin-bottom: 20px;
+}
+
+.message-content strong {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.highlight {
+    background: var(--gradient-2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: clamp(1.1rem, 4.5vw, 1.4rem);
+    font-weight: 700;
+    text-align: center !important;
+}
+
+.signature {
+    font-family: 'Pacifico', cursive;
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+    text-align: center !important;
+    margin-top: 30px;
+    color: var(--secondary);
+}
+
+/* Seção dos Filhos */
+.kids-section {
+    background: var(--gradient-3);
+    border-radius: 30px;
+    padding: 40px 20px;
+}
+
+.kids-tribute {
+    display: grid;
+    gap: 20px;
+}
+
+.tribute-card {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.tribute-card:active {
+    transform: scale(0.98);
+}
+
+.tribute-emoji {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+    margin-bottom: 15px;
+}
+
+.tribute-card p {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    line-height: 1.6;
+}
+
+/* Desejos */
+.wishes-section {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 30px;
+    padding: 40px 20px;
+}
+
+.wishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+}
+
+.wish-card {
+    background: var(--gradient-4);
+    padding: 25px 15px;
+    border-radius: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.wish-card:active {
+    transform: translateY(-5px) scale(1.05);
+}
+
+.wish-icon {
+    font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: 10px;
+}
+
+.wish-card p {
+    font-size: clamp(0.85rem, 3.5vw, 1rem);
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.footer-text {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    margin-bottom: 10px;
+}
+
+.footer-date {
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+    opacity: 0.7;
+}
+
+/* Controle de Áudio */
+.audio-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.audio-control.hidden {
+    display: none;
+}
+
+.audio-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--gradient-2);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(245, 87, 108, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.audio-btn:active {
+    transform: scale(0.9);
+}
+
+.audio-icon {
+    font-size: 24px;
+}
+
+/* Modal de Foto */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 90%;
+    max-width: 700px;
+    border-radius: 15px;
+    animation: zoom 0.6s;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    color: #bbb;
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem;
+}
+
+/* Corações Flutuantes */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 500;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    color: var(--primary);
+    opacity: 0.6;
+    animation: floatHeart linear forwards;
+    pointer-events: none;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-100px) scale(1.5) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* Animações */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsividade Extra para iPhone */
+@media (max-width: 480px) {
+    .wishes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .photo-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 30px 15px;
+    }
+}
+
+/* Landscape em mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .welcome-content {
+        padding: 10px;
+    }
+
+    .title-animated {
+        font-size: 2.5rem;
+    }
+
+    .age-badge {
+        padding: 10px 30px;
+        font-size: 1.5rem;
+    }
+}
+
+/* --- Novas Seções (Timeline e Reveal) --- */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Linha do Tempo */
+.timeline-section {
+    margin-top: 40px;
+    padding-bottom: 60px;
+}
+
+.timeline {
+    position: relative;
+    max-width: 600px;
+    margin: 40px auto;
+    padding-left: 30px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 7.5px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--gradient-2);
+    border-radius: 10px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -32.5px;
+    top: 5px;
+    width: 18px;
+    height: 18px;
+    background: var(--light);
+    border: 3px solid var(--primary);
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 10px var(--primary);
+}
+
+.timeline-content {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-content {
+    transform: translateX(5px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.timeline-content h4 {
+    color: var(--accent);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.timeline-content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+/* Ajustes para iPhone na Timeline */
+@media (max-width: 480px) {
+    .timeline {
+        padding-left: 20px;
+    }
+
+    .timeline::before {
+        left: 3.5px;
+    }
+
+    .timeline-dot {
+        left: -20px;
+        width: 14px;
+        height: 14px;
+    }
+}
