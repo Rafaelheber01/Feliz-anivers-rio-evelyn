@@ -10,11 +10,8 @@
     --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -25,6 +22,7 @@ body {
     min-height: 100vh;
     position: relative;
 }
+
 
 /* Estrelas de Fundo */
 .stars {

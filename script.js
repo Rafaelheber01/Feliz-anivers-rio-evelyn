@@ -28,11 +28,16 @@ startBtn.addEventListener('click', () => {
     // Tocar música na primeira interação para desbloquear áudio no navegador
     playMusic();
 
-    // Mostrar a tela do jogo antes de scrollar
+    // Mostrar a tela do jogo
     gameScreen.classList.add('active');
 
-    // Scroll suave para os balões
-    gameScreen.scrollIntoView({ behavior: 'smooth' });
+    // Pequeno atraso para garantir que o navegador processe o novo elemento
+    setTimeout(() => {
+        gameScreen.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }, 50);
 
     startGame();
 });
@@ -245,6 +250,10 @@ audioToggle.addEventListener('click', () => {
 });
 
 function playMusic() {
+    // Definir o início para 20 segundos se for o primeiro play
+    if (backgroundMusic.currentTime === 0) {
+        backgroundMusic.currentTime = 20;
+    }
     backgroundMusic.play().then(() => {
         musicPlaying = true;
         audioToggle.querySelector('.audio-icon').textContent = '🔊';
@@ -254,6 +263,7 @@ function playMusic() {
         audioToggle.querySelector('.audio-icon').textContent = '🔇';
     });
 }
+
 
 function pauseMusic() {
     backgroundMusic.pause();
