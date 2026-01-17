@@ -857,3 +857,25 @@ section {
         height: 14px;
     }
 }
+
+/* --- Vídeo --- */
+.video-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 30px;
+    margin-top: 40px;
+    padding: 40px 20px;
+}
+
+.video-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.main-video {
+    width: 100%;
+    display: block;
+}
