@@ -25,10 +25,18 @@ const balloonColors = ['🎈', '🎉', '🎊', '🎁', '💝', '🌟', '✨', '�
 
 // Iniciar celebração
 startBtn.addEventListener('click', () => {
-    welcomeScreen.classList.remove('active');
+    // Tocar música na primeira interação para desbloquear áudio no navegador
+    playMusic();
+
+    // Mostrar a tela do jogo antes de scrollar
     gameScreen.classList.add('active');
+
+    // Scroll suave para os balões
+    gameScreen.scrollIntoView({ behavior: 'smooth' });
+
     startGame();
 });
+
 
 // Iniciar jogo
 function startGame() {
